@@ -28,12 +28,13 @@ class ViewController: UIViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         
-//        alertController.addBackgroundColor(color: .red)
+        alertController.addBackgroundColor(color: .red)
         
 //        alertController.setButtonTextColor(color: .white)
         
-//        let blur = UIBlurEffect(style: .regular)
-//        alertController.addVisualeffects(blurEffect: blur, vibrancyEffect: nil)
+        let blur = UIBlurEffect(style: .dark)
+        let vibrancy = UIVibrancyEffect(blurEffect: blur)
+        alertController.addVisualeffects(blurEffect: blur, vibrancyEffect: vibrancy)
         
         
 //        alertController.setAttributedTitle(title: "Testing", color: .red, font: UIFont(name: "Georgia", size: 18.0))

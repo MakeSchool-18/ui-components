@@ -78,9 +78,6 @@ extension UIAlertController {
             }
         }
     }
-    
-    
-    
 }
 
 extension UIView
