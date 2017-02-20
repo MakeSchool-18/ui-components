@@ -19,12 +19,7 @@ class ViewController: UIViewController {
     
     
     
-    hexView.shapeLayer.strokeStart = 0
-    hexView.shapeLayer.strokeEnd = 0
-    UIView.animate(withDuration: 1, delay: 1, options: [], animations: {
-      self.hexView.shapeLayer.strokeStart = 0
-      self.hexView.shapeLayer.strokeEnd = 0.42
-    }, completion: nil)
+    
 
     
 //    
@@ -36,6 +31,19 @@ class ViewController: UIViewController {
 //    view.addSubview(hex)
     
     
+  }
+  
+ 
+  
+  override func viewWillLayoutSubviews() {
+     
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
   }
 
   override func didReceiveMemoryWarning() {
