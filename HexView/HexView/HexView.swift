@@ -39,9 +39,7 @@ import UIKit
   
   override func layoutSubviews() {
     setup()
-    self.animation1()
   }
-  
   
   func setup() {
     
@@ -79,17 +77,12 @@ import UIKit
   
   func animation1 () {
     
-    self.shapeLayer.strokeStart = -0.0836
+    self.shapeLayer.strokeStart = 0
     self.shapeLayer.strokeEnd = 0
-    UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
+    UIView.animate(withDuration: 3, delay: 6, options: [], animations: {
       self.shapeLayer.strokeStart = 0
-      self.shapeLayer.strokeEnd = 0.0836 // For some reason each side represents 0.0836 of the total shape for this value.  🤔🤔🤔
+      self.shapeLayer.strokeEnd = 1/6
     }, completion: nil)
-//    UIView.animate(withDuration: 1, delay: 1, options: [], animations: {
-//      self.hexView.shapeLayer.strokeStart = 0.0836
-//      self.hexView.shapeLayer.strokeEnd = 0.1672 // For some reason each side represents 0.0836 of the total shape for this value.  🤔🤔🤔
-//    }, completion: nil)
-
     
     
 //    UIView.animateKeyframes(withDuration: 7, delay: 0.5, options: [], animations: {
