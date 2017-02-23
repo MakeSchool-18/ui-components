@@ -65,6 +65,36 @@ Or create a CircleView with storyboard by drawing a UIView
 within a ViewController and setting the **Class** in the 
 Identity tab to `CircleView`. 
 
+![screenshot-identity](screenshot-identity.png)
 
+## Workign with value
+
+Setting the `value` property in a range of 0 to 1 to draws the
+circle from beginning to end. 
+
+CircleView sends a `valueChanged` event when value is updated. 
+Use `addAction()` to register for change updates. 
+
+```
+@IBOutlet weak var circleView: CircleView!
+
+override func viewDidLoad() {
+    super.viewDidLoad() 
+    circleView.addTarget(self, action: #selector(update), for: .valueChanged)
+}
+
+func update() {
+    print("Circle view updated! \(circleView.value)")
+}
+
+```
+
+You can also add IBActions to a CircleView in storyboard. 
+
+```
+@IBAction func circleViewChanges(_ sender: CircleView) {
+    slider.value = circlePath.value
+}
+```
 
 
