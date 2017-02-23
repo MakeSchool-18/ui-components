@@ -67,7 +67,7 @@ Identity tab to `CircleView`.
 
 ![screenshot-identity](screenshot-identity.png)
 
-## Workign with value
+## Working with value
 
 Setting the `value` property in a range of 0 to 1 to draws the
 circle from beginning to end. 
