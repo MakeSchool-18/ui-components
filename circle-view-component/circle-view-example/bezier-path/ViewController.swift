@@ -34,6 +34,12 @@ class ViewController: UIViewController {
         let rect = CGRect(x: 20, y: 20, width: 200, height: 200)
         let circleView = CircleView(frame: rect)
         view.addSubview(circleView)
+        
+        circleView.strokeColor = UIColor(white: 0, alpha: 0.5)
+        circleView.gradientColorA = UIColor.green
+        circleView.gradientColorB = UIColor.blue
+        circleView.strokeWidth = 24
+        circleView.strokeOffset = 4
     }
     
     func update() {

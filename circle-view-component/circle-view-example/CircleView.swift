@@ -185,6 +185,8 @@ class CircleView: UIControl {
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.text = "99"
+        
+        drawPath()
     }
     
     
