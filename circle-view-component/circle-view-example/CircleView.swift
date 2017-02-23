@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CirclePath: UIControl {
+class CircleView: UIControl {
 
     // MARK: - Private Vars
     

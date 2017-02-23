@@ -3,6 +3,8 @@
 The CircleView component draws an interactive circle. Use this like a guage or
 meter to show progress, or to set a or input a value. 
 
+![screenshot](screenshot.gif)
+
 Many of the visual properties of the CircleView can be set in storyboard. 
 
 - Line background color
@@ -13,7 +15,7 @@ Many of the visual properties of the CircleView can be set in storyboard.
 - Stroke offset
 - Label size
 
-![screenshot](screenshot.gif)
+![screenshot-storyboard](screenshot-storyboard.png)
 
 ## Import CircleView
 
@@ -25,7 +27,7 @@ the `CircleView.swift` file into your project.
 Create a CircleView in code with: 
 
 ```
-let rect = CGRect(x: 0, y: 0, width: 200, height: 200)
+let rect = CGRect(x: 20, y: 20, width: 200, height: 200)
 let circleView = CircleView(frame: rect)
 view.addSubview(circleView)
 ```
@@ -33,5 +35,7 @@ view.addSubview(circleView)
 Or create a CircleView with storyboard by drawing a UIView
 within a ViewController and setting the **Class** in the 
 Identity tab to `CircleView`. 
+
+
 
 

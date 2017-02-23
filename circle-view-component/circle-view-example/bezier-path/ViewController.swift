@@ -14,23 +14,26 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var slider: UISlider!
     
-    @IBOutlet weak var circlePath: CirclePath!
+    @IBOutlet weak var circlePath: CircleView!
     
     @IBAction func sliderChanged(_ sender: UISlider) {
         circlePath.value = sender.value
     }
     
-    @IBAction func circlePathChanges(_ sender: CirclePath) {
+    @IBAction func circlePathChanges(_ sender: CircleView) {
         slider.value = circlePath.value
     }
-    
-    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         circlePath.addTarget(self, action: #selector(update), for: .valueChanged)
+        
+        
+        let rect = CGRect(x: 20, y: 20, width: 200, height: 200)
+        let circleView = CircleView(frame: rect)
+        view.addSubview(circleView)
     }
     
     func update() {
