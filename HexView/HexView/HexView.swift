@@ -18,13 +18,25 @@ import UIKit
    }
    */
   
-  @IBInspectable var color: UIColor = UIColor.cyan {didSet{layoutSubviews()}}
+  @IBInspectable var color: UIColor = UIColor.cyan {didSet{setNeedsLayout()}}
   
-  @IBInspectable var strokeWidth: CGFloat = 3 {didSet{layoutSubviews()}}
-  
-  @IBInspectable var strokeColor: UIColor = UIColor.magenta {didSet{layoutSubviews()}}
+  @IBInspectable var strokeWidth: CGFloat = 3 {didSet{setNeedsLayout()}}
+
+  @IBInspectable var strokeColor: UIColor = UIColor.magenta {didSet{setNeedsLayout()}}
   
   var shapeLayer = CAShapeLayer()
+  
+  let fillLayer = CAShapeLayer()
+  let segment_1 = CAShapeLayer()
+  let segment_2 = CAShapeLayer()
+  let segment_3 = CAShapeLayer()
+  let segment_4 = CAShapeLayer()
+  let segment_5 = CAShapeLayer()
+  let segment_6 = CAShapeLayer()
+  
+//  let segment_array = [segment_1, segment_2]
+  
+  
   var path = UIBezierPath()
   
   override init(frame: CGRect) {
@@ -43,13 +55,15 @@ import UIKit
   
   func setup() {
     
+    // Set up layers
+    // filllayer addSubLayer
+    // segmentLayer_1 addSubLayer
     
-    
+  
     // Geometry
     let sides = 6
-    let cx = self.bounds.width / 2
-    let cy = self.bounds.height / 2
-    let c = self.center
+    var cx = self.bounds.width / 2
+    var cy = self.bounds.height / 2
     let r = cy < cx ? cy : cx
     
     let start = CGPoint(x: cx, y: cy + r)
@@ -67,6 +81,7 @@ import UIKit
     path.close()
     shapeLayer.fillColor = color.cgColor
     shapeLayer.path = path.cgPath
+    // shapeLayer2.path = path.cgPath
     self.layer.addSublayer(shapeLayer)
     self.layer.backgroundColor = UIColor.clear.cgColor
     
@@ -75,14 +90,47 @@ import UIKit
   
   }
   
-  func animation1 () {
+  
+  // MARK: Animation Code
+  
+  public func animation1() {
     
-    self.shapeLayer.strokeStart = 0
-    self.shapeLayer.strokeEnd = 0
-    UIView.animate(withDuration: 3, delay: 6, options: [], animations: {
-      self.shapeLayer.strokeStart = 0
-      self.shapeLayer.strokeEnd = 1/6
-    }, completion: nil)
+//    var sideAnimations = [CAAnimationGroup]()
+    
+    for i in 0 ... 5 {
+      
+      let startAnimation = CABasicAnimation(keyPath: "strokeStart")
+
+      let endAnimation = CABasicAnimation(keyPath: "strokeEnd")
+      
+      startAnimation.fromValue = CGFloat(i) * (0.84)
+      startAnimation.toValue = CGFloat(i+1) * (0.84)
+
+      startAnimation.duration = 2
+      startAnimation.isRemovedOnCompletion = false
+      
+      endAnimation.fromValue = CGFloat(i+1) * (0.84)
+      endAnimation.toValue = CGFloat(i+2) * (0.84)
+      endAnimation.duration = 2
+      endAnimation.isRemovedOnCompletion = false
+      
+//      let group = CAAnimationGroup()
+//      group.animations = [startAnimation, endAnimation]
+//      
+//      sideAnimations.append(group)
+      
+      self.shapeLayer.add(startAnimation, forKey: "strokeStart")
+      self.shapeLayer.add(endAnimation, forKey: "strokeEnd")
+      
+    }
+    
+    
+//    self.shapeLayer.strokeStart = 0
+//    self.shapeLayer.strokeEnd = 0
+//    UIView.animate(withDuration: 3, delay: 6, options: [], animations: {
+//      self.shapeLayer.strokeStart = 0
+//      self.shapeLayer.strokeEnd = 1/6
+//    }, completion: nil)
     
     
 //    UIView.animateKeyframes(withDuration: 7, delay: 0.5, options: [], animations: {
