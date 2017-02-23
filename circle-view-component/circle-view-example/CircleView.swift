@@ -58,7 +58,10 @@ class CircleView: UIControl {
     /** 
      Displays the value in a range of 0 to 1 as the 
      stroke of the arc. 
-     */
+    */
+    
+    // TODO: Add starting property
+    // TODO: Add start and end values for range
     
     var value: Float = 0.5 {
         didSet {
@@ -112,6 +115,9 @@ class CircleView: UIControl {
         var newValue = lastValue + Float(deltaX)
         newValue = max(min(newValue, 1), 0)
         value = newValue
+        
+        // TODO: connect this to value update
+        // TODO: Send out a few more messages
         sendActions(for: .valueChanged)
     }
     
