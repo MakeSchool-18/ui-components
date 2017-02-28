@@ -9,6 +9,11 @@ WARNING: Changing the UIAlertController is not supported by Apple, Using this ex
 ![Danger example](Assets/danger1.png)
 ![Danger example](Assets/dark.png)
 
+## How To Install:
+
+Find the file "AwesomeAlert.swift" in the xcode project and copy that into your project.
+That's it!
+Just create a normal UIAlertController and start making it beautiful!
 
 ## Functions:
 
