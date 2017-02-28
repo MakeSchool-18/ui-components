@@ -9,9 +9,16 @@
 import Foundation
 import UIKit
 
+@IBDesignable
 extension UIAlertController {
     
-    func addBackgroundColor(color: UIColor) {
+    /**
+     Allows you to set the background color of the AlertController.
+     
+        - parameter color: The color for the background.
+     
+     */
+    func setBackgroundColor(color: UIColor) {
         let backgroundView = self.view.subviews.first
         if let backView = backgroundView {
             backView.layer.cornerRadius = 15.0
@@ -20,10 +27,24 @@ extension UIAlertController {
         
     }
     
+    /**
+    Allows you to change the tint color of the ActivityController. Mainly changes the text color of the action buttons.
+     
+     - parameter color: The color for the tint color.
+     
+     */
     func setTintColor(color: UIColor) {
         self.view.tintColor = color
     }
     
+    
+    /**
+     Allows you to change the blur and the vibrancy of the ActivityController.
+     
+        - parameter blurEffect: Choose a UIBlurEffect to apply to the background view.
+        - parameter vibrancyEffect: Choose a UIVibrancyEffect to apply to the background view.
+     
+     */
     func addVisualeffects(blurEffect: UIBlurEffect?, vibrancyEffect: UIVibrancyEffect?) {
         if let visualEffectView = self.view.searchVisualEffectsSubview()
         {
@@ -37,6 +58,14 @@ extension UIAlertController {
         }
     }
     
+    /**
+     Allows you to change the title text, color and font.
+     
+        - parameter title: The text that will be shown as the title of the ActivityController.
+        - parameter color: The text color of the title.
+        - parameter font: The font the title text.
+     
+     */
     func setAttributedTitle(title: String, color: UIColor?, font: UIFont?){
         
         let mutableString = NSMutableAttributedString(string: title)
@@ -51,6 +80,13 @@ extension UIAlertController {
         self.setValue(mutableString, forKey: "attributedTitle")
     }
     
+    /**
+     Allows you to change the title text, color and font.
+        
+        - parameter message: The text that will be shown as the message of the ActivityController.
+        - parameter color: The text color of the message.
+        - parameter font: The font of the message text.
+     */
     func setAttributedMessage(message: String, color: UIColor?, font: UIFont?) {
         
         let mutableString = NSMutableAttributedString(string: message)
@@ -65,12 +101,25 @@ extension UIAlertController {
         self.setValue(mutableString, forKey: "attributedMessage")
     }
     
+    /**
+     Allows you to set the text color of all action buttons on the ActivityController.
+        
+        - parameter color: The text color of the button title.
+     
+     */
     func setAllActionsTextColors(color: UIColor){
         for action in actions {
             action.setValue(color, forKey: "titleTextColor")
         }
     }
     
+    /**
+     Allows you to change the text color of a single action button on the ActivityController.
+     
+        - parameter actionTitle: This is the name you gave to the action when adding to the ActivotyController.
+     
+        - parameter color: The text color of the button title.
+     */
     func setActionTextColor(actionTitle: String, color: UIColor){
         for action in actions {
             if action.title == actionTitle {

@@ -10,47 +10,113 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let alertController = UIAlertController(title: "Simple", message: "Simple alertView demo with Cancel and Ok.", preferredStyle: UIAlertControllerStyle.alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+    
+    @IBAction func dangerPressed(_ sender: Any) {
+        let alertController = UIAlertController(title: "Simple", message: "This is AmazingAlert and i hope you like it!", preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "Horrible", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
             print("Cancel")
         }
         
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+        let okAction = UIAlertAction(title: "Awesome", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
             print("OK")
         }
         
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         
-        alertController.addBackgroundColor(color: .red)
+        // MARK: Red Danger Style
+        // Background color
+        alertController.setBackgroundColor(color: .red)
         
-//        alertController.setButtonTextColor(color: .white)
+        // Fonts
+        let titleFont = UIFont(name: "Copperplate-Bold", size: 20)
+        alertController.setAttributedTitle(title: "Danger", color: .white, font: titleFont)
         
-        let blur = UIBlurEffect(style: .dark)
-        let vibrancy = UIVibrancyEffect(blurEffect: blur)
-        alertController.addVisualeffects(blurEffect: blur, vibrancyEffect: vibrancy)
+        let messageFont = UIFont(name: "Copperplate-Light", size: 16)
+        alertController.setAttributedMessage(message: "World is ending in 24 Hours", color: .white, font: messageFont)
+        
+        // Blur effect
+        
+        let blur = UIBlurEffect(style: .light)
+        let effect = UIVibrancyEffect(blurEffect: blur)
+        alertController.addVisualeffects(blurEffect: nil, vibrancyEffect: effect)
+        
+        alertController.setAllActionsTextColors(color: .white)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func fancyPressed(_ sender: Any) {
+        
+        // Mark: Fancy style
+        
+        let alertController = UIAlertController(title: "Simple", message: "This is AmazingAlert and i hope you like it!", preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "Horrible", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+            print("Cancel")
+        }
+        
+        let okAction = UIAlertAction(title: "Awesome", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+            // Fonts
+        let titleFont = UIFont(name: "Zapfino", size: 20)
+        alertController.setAttributedTitle(title: "Welcome", color: .black, font: titleFont)
+        
+        let messageFont = UIFont(name: "SnellRoundhand" , size: 19)
+        alertController.setAttributedMessage(message: "This is AmazingAlert and I hope you like it!", color: .black, font: messageFont)
+        
+                // Blur effect
+        
+        let blur = UIBlurEffect(style: .regular)
+        let effect = UIVibrancyEffect(blurEffect: blur)
+        alertController.addVisualeffects(blurEffect: nil, vibrancyEffect: effect)
         
         
-//        alertController.setAttributedTitle(title: "Testing", color: .red, font: UIFont(name: "Georgia", size: 18.0))
+        alertController.setActionTextColor(actionTitle: "Horrible", color: .red)
+        alertController.setActionTextColor(actionTitle: "Awesome", color: .green)
         
-//        alertController.setAttributedMessage(message: alertController.message!, color: .red, font: UIFont(name: "Georgia", size: 16.0))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-//        alertController.setAllButtonTextColor(color: .red)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let alertController = UIAlertController(title: "Simple", message: "This is AmazingAlert and i hope you like it!", preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "Nope", style: UIAlertActionStyle.cancel) { (result : UIAlertAction) -> Void in
+            print("Cancel")
+        }
         
-//        alertController.setActionTextColor(actionTitle: "Cancel", color: .red)
+        let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("Ok")
+        }
         
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
         
+        // MARK: Dark
+        
+        alertController.setBackgroundColor(color: .black)
+        
+        let blur = UIBlurEffect(style: .light)
+        alertController.addVisualeffects(blurEffect: blur, vibrancyEffect: nil)
+        
+        let titleFont = UIFont(name: "Copperplate", size: 20)
+        alertController.setAttributedTitle(title: "Hello", color: .white, font: titleFont)
+        
+        let messageFont = UIFont(name: "Copperplate", size: 18)
+        alertController.setAttributedMessage(message: "Is it me you're looking for?", color: .white, font: messageFont)
+        
+        alertController.setAllActionsTextColors(color: .white)
         
         present(alertController, animated: true, completion: nil)
 
-        
-        print(alertController.actions)
     }
 }
 
