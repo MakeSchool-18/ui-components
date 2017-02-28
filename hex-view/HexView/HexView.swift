@@ -9,19 +9,51 @@
 
 import UIKit
 
-@IBDesignable class HexView: UIButton {
 
+@IBDesignable class HexView: UIButton {
+  
+//  @IBInspectable var fontStyle: FontStyle = .normal {
+//    didSet {
+//      setNeedsLayout()
+//    }
+//  }
+  
   // Inspectable variables
-  @IBInspectable var color: UIColor = UIColor.cyan {didSet{setNeedsLayout()}}
+  @IBInspectable var color: UIColor = UIColor.cyan {
+    didSet {
+      setNeedsLayout()
+    }
+  }
   
-  @IBInspectable var strokeWidth: CGFloat = 3 {didSet{setNeedsLayout()}}
+  @IBInspectable var strokeWidth: CGFloat = 3 {
+    didSet {
+      setNeedsLayout()
+    }
+  }
   
-  @IBInspectable var strokeColor: UIColor = UIColor.magenta {didSet{setNeedsLayout()}}
+  @IBInspectable var strokeColor: UIColor = UIColor.magenta {
+    didSet {
+      setNeedsLayout()
+    }
+  }
   
   @IBInspectable var labelText: String = "" {
     didSet {
       let state = UIControlState.normal
       setTitle(labelText, for: state)
+      setNeedsLayout()
+    }
+  }
+  
+  @IBInspectable var labelColor: UIColor = UIColor.white {
+    didSet {
+      setNeedsLayout()
+    }
+  }
+  
+  @IBInspectable var labelFont: UIFont = UIFont.boldSystemFont(ofSize: 22) {
+    didSet {
+      setNeedsLayout()
     }
   }
   
@@ -29,16 +61,15 @@ import UIKit
   
   // Setup variables
   var fillLayer = CAShapeLayer()
-//  var hexCells = [HexCell]()
-
+  //  var hexCells = [HexCell]()
+  
   var path = UIBezierPath()
   
   
   // Initializers
   override init(frame: CGRect) {
     super.init(frame: frame)
-    self.fillLayer.strokeStart = 0
-    self.fillLayer.strokeEnd = 1
+    
     
   }
   
@@ -47,16 +78,47 @@ import UIKit
     
   }
   
-//  init(hexCells: [HexCell]) {
-//    self.hexCells = hexCells
-//    self.init()
-//  }
+  
+  //  init(hexCells: [HexCell]) {
+  //    self.hexCells = hexCells
+  //    self.init()
+  //  }
   
   override func layoutSubviews() {
     setup()
   }
   
+  func onTap(tap: UITapGestureRecognizer) {
+    print("Tap!!!!!!")
+    
+    switch tap.state {
+    case .began:
+      print("Touch began")
+      
+    case .possible:
+      print("Possibloe?????")
+      
+    case .ended:
+      sendActions(for: .touchUpInside)
+      
+    default:
+      print("?????")
+    }
+  }
+  
+  
+  
+  
   func setup() {
+    
+    let tap = UITapGestureRecognizer(target: self, action: #selector(onTap(tap:)))
+      addGestureRecognizer(tap)
+    
+    self.fillLayer.strokeStart = 0
+    self.fillLayer.strokeEnd = 1
+    self.adjustsImageWhenHighlighted = true
+    self.adjustsImageWhenDisabled = true
+    
     
     // Geometry
     let sides = 6
@@ -80,12 +142,34 @@ import UIKit
     path.close()
     fillLayer.fillColor = color.cgColor
     fillLayer.path = path.cgPath
+    fillLayer.zPosition = -1
+    
+    
+    let maskLayer = CAShapeLayer()
+    maskLayer.path = path.cgPath
+    // TODO: Add mask layer
+    // TODO: Make background image layer
+    // TODO: Set mask
+    
+    
     self.layer.addSublayer(fillLayer)
+    self.addSubview(self.titleLabel!)
+  
     self.layer.backgroundColor = UIColor.clear.cgColor
     
     fillLayer.lineWidth = strokeWidth
     fillLayer.strokeColor = strokeColor.cgColor
-   
+    
+    // Label
+    let label = UILabel(frame: self.bounds)
+    label.textAlignment = .center
+    label.textColor = labelColor
+    
+    // TODO: Use enum to set font style...
+    label.text = labelText
+    label.font = labelFont
+    self.addSubview(label)
+    
   }
   
   

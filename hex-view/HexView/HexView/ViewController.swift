@@ -13,6 +13,9 @@ class ViewController: UIViewController {
   @IBOutlet weak var hexView: HexView!
   
   
+  
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
