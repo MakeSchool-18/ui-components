@@ -19,23 +19,24 @@ import UIKit
 //  }
   
   // Inspectable variables
-  @IBInspectable var color: UIColor = UIColor.cyan {
+  @IBInspectable var color: UIColor = UIColor.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 1) {
     didSet {
       setNeedsLayout()
     }
   }
   
-  @IBInspectable var strokeWidth: CGFloat = 3 {
+  @IBInspectable var strokeWidth: CGFloat = 4 {
     didSet {
       setNeedsLayout()
     }
   }
   
-  @IBInspectable var strokeColor: UIColor = UIColor.magenta {
+  @IBInspectable var strokeColor: UIColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 1) {
     didSet {
       setNeedsLayout()
     }
   }
+  
   
   @IBInspectable var labelText: String = "" {
     didSet {
@@ -51,11 +52,17 @@ import UIKit
     }
   }
   
-  @IBInspectable var labelFont: UIFont = UIFont.boldSystemFont(ofSize: 22) {
+  @IBInspectable var labelFontSize: CGFloat = 22 {
     didSet {
       setNeedsLayout()
     }
   }
+  
+//  @IBInspectable var backgroundImage: UIImage? = UIImage.init(cgImage: CGImage.) {
+//    didSet {
+//      
+//    }
+//  }
   
   
   
@@ -93,6 +100,10 @@ import UIKit
     
     switch tap.state {
     case .began:
+//      self.layer.shadowOpacity = 1.0
+//      self.layer.shadowColor = UIColor.darkGray.cgColor
+//      self.layer.shadowOffset = CGSize(width: 10, height: 10)
+//      self.layer.shadowRadius = 20
       print("Touch began")
       
     case .possible:
@@ -160,6 +171,11 @@ import UIKit
     fillLayer.lineWidth = strokeWidth
     fillLayer.strokeColor = strokeColor.cgColor
     
+//    fillLayer.shadowRadius = 20
+//    fillLayer.shadowOffset = CGSize(width: 10, height: 20)
+//    fillLayer.shadowColor = UIColor.red.cgColor
+//    
+    
     // Label
     let label = UILabel(frame: self.bounds)
     label.textAlignment = .center
@@ -167,6 +183,7 @@ import UIKit
     
     // TODO: Use enum to set font style...
     label.text = labelText
+    let labelFont = UIFont.boldSystemFont(ofSize: labelFontSize)
     label.font = labelFont
     self.addSubview(label)
     
