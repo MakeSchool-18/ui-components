@@ -13,18 +13,13 @@ class ViewController: UIViewController {
   @IBOutlet weak var hexView: HexView!
   
   
+  
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
     
-    
-    
-    hexView.shapeLayer.strokeStart = 0
-    hexView.shapeLayer.strokeEnd = 0
-    
-    hexView.animation1()
-    
-      
+//    hexView.animation1()
     
   }
 
